@@ -38,6 +38,9 @@ function _brasa_network_site_option_save(){
 add_action('admin_init','_brasa_network_site_option_save',99999);
 
 function brasa_get_menu_sites(){
+	if(!is_multisite())
+		return array(home_url('/') => get_bloginfo('name'));
+
 	$sites = wp_get_sites();
 	$_sites = array();
 
